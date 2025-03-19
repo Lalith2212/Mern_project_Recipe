@@ -6,9 +6,11 @@ import Navbar from './Navbar'
 export default function MainNavigation() {
   return (
    <>
-    <Navbar/>
-    <Outlet/>
-    <Footer/>
+    <Navbar />
+    <div style={{ backgroundColor: "#ffe4b5", minHeight: "100vh", width: "100vw", padding: "20px" }}>
+      <Outlet />
+    </div>
+    <Footer />
    </>
   )
 }
