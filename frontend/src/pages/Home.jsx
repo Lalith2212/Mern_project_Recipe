@@ -6,8 +6,6 @@ import RecipeItems from '../components/RecipeItems'
 import { useNavigate } from 'react-router-dom'
 import Modal from '../components/Modal'
 import InputForm from '../components/InputForm'
-
-
 export default function Home() {
     const navigate = useNavigate()
     const [isOpen, setIsOpen] = useState(false)
