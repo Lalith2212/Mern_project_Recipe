@@ -10,13 +10,6 @@ export default function Home() {
     const navigate = useNavigate()
     const [isOpen, setIsOpen] = useState(false)
 
-    useEffect(() => {
-        toast.success("Welcome to Home", {
-            position: "top-right", // You can change this to 'top-center', 'bottom-left', etc.
-            duration: 3000, // Display time in milliseconds
-        })
-    }, [])
-
     const addRecipe = () => {
         let token = localStorage.getItem("token")
         if (token)
