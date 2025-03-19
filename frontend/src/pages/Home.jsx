@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom'
 import Modal from '../components/Modal'
 import { Tilt } from '@jdion/tilt-react'
 import InputForm from '../components/InputForm'
-
 import toast from 'react-hot-toast'
 import { Classic } from "@theme-toggles/react"
 
