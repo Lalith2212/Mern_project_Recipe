@@ -4,7 +4,6 @@ import InputForm from "./InputForm";
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FaBowlFood } from "react-icons/fa6";
-import toast from "react-hot-toast";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
