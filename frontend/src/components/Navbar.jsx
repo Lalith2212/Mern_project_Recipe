@@ -4,7 +4,7 @@ import InputForm from "./InputForm";
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FaBowlFood } from "react-icons/fa6";
-
+import toast from "react-hot-toast";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,8 +17,17 @@ export default function Navbar() {
     const token = localStorage.getItem("token");
     const userData = localStorage.getItem("user");
 
-    setIsLogin(!!token); // Convert token existence to boolean
+    const wasLoggedIn = isLogin; // Store previous login state
+
+    setIsLogin(!!token);
     setUser(userData ? JSON.parse(userData) : null);
+
+    // ✅ Show toast message only when login state changes
+    if (!wasLoggedIn && token) {
+      toast.success("Successfully logged in!");
+    } else if (wasLoggedIn && !token) {
+      toast.success("Logged out successfully!");
+    }
   };
 
   // ✅ Load auth state when component mounts
@@ -36,7 +45,9 @@ export default function Navbar() {
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    updateAuthState(); // Update state immediately
+    setIsLogin(false);  // Update state immediately
+    setUser(null);
+    toast.success("Logged out successfully!"); // ✅ Toast on logout
   };
 
   return (
@@ -48,7 +59,7 @@ export default function Navbar() {
         transition={{ duration: 0.5 }}
       >
         <motion.h2 className="logo" whileHover={{ scale: 1.1 }}>
-        <FaBowlFood />ungry Hive
+          <FaBowlFood /> Hungry Hive
         </motion.h2>
 
         <ul className="nav-links">
@@ -90,7 +101,13 @@ export default function Navbar() {
         <Modal onClose={() => setIsOpen(false)}>
           <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }}>
             <InputForm 
-              setIsLogin={setIsLogin} 
+              setIsLogin={(status) => {
+                setIsLogin(status);
+                if (status) {
+                  toast.success("Logged in successfully!"); // ✅ Toast on login
+                  updateAuthState(); // Ensure state updates
+                }
+              }} 
               setUser={setUser} 
               setIsOpen={setIsOpen} 
             />
@@ -102,7 +119,13 @@ export default function Navbar() {
         <Modal onClose={() => setIsSignupOpen(false)}>
           <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }}>
             <InputForm 
-              setIsLogin={setIsLogin} 
+              setIsLogin={(status) => {
+                setIsLogin(status);
+                if (status) {
+                  toast.success("Signup successful! Logged in."); // ✅ Toast on signup
+                  updateAuthState(); // Ensure state updates
+                }
+              }} 
               setUser={setUser} 
               setIsOpen={setIsSignupOpen} 
               isSignup={true} 

@@ -7,6 +7,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+
 }
 
 /* Animations */
@@ -153,24 +154,61 @@ section{
   margin-top: 6rem;
   gap:10rem;
   position: relative;
+  
 }
 
 .home .left h1{
   margin-bottom: 1rem;
 }
 
-.home button{
-  color: rgb(0, 0, 0);
-  border:none;
-  background-color: #8cdd6c;
-  width: 200px;
-  padding: 0.5rem;
-  border-radius: 0;
-}
+
 
 .home a:hover{
   color: white;
   background-color: #e9dddd;
+}
+.share {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #10adc2;
+  color: #333;
+  cursor: pointer;
+  transition: 0.3s;
+  position: relative;
+}
+
+.share:hover {
+  color: white;
+  background-color: #e9dddd;
+}
+
+/* Popup Tooltip */
+.share::after {
+  content: "Click to share this content!";
+  position: absolute;
+  bottom: 130%; /* Adjusts position above the button */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #43bece;
+  color: #000000;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-size: 14px;
+  white-space: nowrap;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out;
+
+} 
+
+
+/* Show popup on hover */
+.share:hover::after {
+  opacity: 1;
+  visibility: visible;
 }
 
 .home .left h5{
@@ -265,62 +303,103 @@ section{
   background-color: rgba(0, 0, 0, 0.75);
   z-index: 9;
 }
-
-.form{
+.form {
   width: 71%;
   margin: 0 auto;
   text-align: center;
 }
 
-.form-header{
+.form-header {
   background-color: #d4f6e8;
   height: 3px;
   text-align: center;
 }
 
-.form-control{
+.form-control {
   display: flex;
   justify-content: space-between;
-  gap:1rem;
+  gap: 1rem;
   margin-top: 1rem;
 }
 
-.form-control .input{
+.form-control .input,
+.form-control .input-textarea {
   flex-basis: 70%;
-  border:1px solid rgb(156 163 175);
+  border: 1px solid rgb(156 163 175);
   border-radius: 4px;
   height: 30px;
   padding: 2px;
 }
 
-.form-control .input-textarea{
-  border: 1px solid rgb(156 163 175);
-  border-radius: 4px;
-  flex-basis: 70%;
-  padding: 2px;
-}
-
-.form button{
-  margin:2rem 0;
-  border:none;
+.form button {
+  margin: 2rem 0;
+  border: none;
   background-color: #d4f6e8;
   font-size: 14px;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.form p{
+.form p {
   cursor: pointer;
   display: inline;
   border-bottom: 1px solid #307bbd;
-  color:rga(4,136,170);
-  font-size: 14px;
   color: #307bbd;
+  font-size: 14px;
 }
 
-.form .error{
-  color:red;
+.form .error {
+  color: red;
   font-size: 13px;
 }
+
+/* ✅ Media Query for Tablets (768px and below) */
+@media (max-width: 768px) {
+  .form {
+    width: 85%; /* Make it wider on smaller screens */
+  }
+
+  .form-control {
+    flex-direction: column; /* Stack inputs vertically */
+    gap: 0.5rem;
+  }
+
+  .form-control .input,
+  .form-control .input-textarea {
+    flex-basis: 100%; /* Full width inputs */
+    height: 35px; /* Increase input height */
+  }
+
+  .form button {
+    width: 100%; /* Make button full width */
+    font-size: 16px;
+  }
+}
+
+/* ✅ Media Query for Mobile (480px and below) */
+@media (max-width: 480px) {
+  .form {
+    width: 95%; /* Almost full width on mobile */
+  }
+
+  .form-control {
+    gap: 0.3rem;
+  }
+
+  .form-control .input,
+  .form-control .input-textarea {
+    height: 40px; /* Larger input fields */
+    font-size: 16px;
+  }
+
+  .form button {
+    font-size: 18px;
+    padding: 12px;
+  }
+}
+
 .container{
   display: flex;
   justify-content: center;
@@ -565,6 +644,6 @@ section{
     left: 5%;
   }
 }
+.outer-container img{
 
-
-
+}
