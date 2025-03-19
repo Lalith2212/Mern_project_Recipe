@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 import { FaBowlFood } from "react-icons/fa6";
 
 
-
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isSignupOpen, setIsSignupOpen] = useState(false);

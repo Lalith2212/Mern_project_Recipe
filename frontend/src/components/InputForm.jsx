@@ -13,7 +13,7 @@ export default function InputForm({ setIsOpen }) {
     e.preventDefault();
     let endpoint = isSignUp ? "signUp" : "login";
     
-    await axios.post(`https://mern-project-recipe.onrender.com/${endpoint}`, { email, password })
+    await axios.post(`https://mern-project-recipe.vercel.app/${endpoint}`, { email, password })
       .then((res) => {
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("user", JSON.stringify(res.data.user));
