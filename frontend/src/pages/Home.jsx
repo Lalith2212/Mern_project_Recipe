@@ -6,9 +6,6 @@ import RecipeItems from '../components/RecipeItems'
 import { useNavigate } from 'react-router-dom'
 import Modal from '../components/Modal'
 import InputForm from '../components/InputForm'
-import toast from 'react-hot-toast'
-import { Classic } from "@theme-toggles/react"
-
 export default function Home() {
     const navigate = useNavigate()
     const [isOpen, setIsOpen] = useState(false)
