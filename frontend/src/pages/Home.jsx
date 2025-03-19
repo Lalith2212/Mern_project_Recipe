@@ -5,7 +5,6 @@ import Footer from '../components/Footer'
 import RecipeItems from '../components/RecipeItems'
 import { useNavigate } from 'react-router-dom'
 import Modal from '../components/Modal'
-import { Tilt } from '@jdion/tilt-react'
 import InputForm from '../components/InputForm'
 import toast from 'react-hot-toast'
 import { Classic } from "@theme-toggles/react"
@@ -39,9 +38,9 @@ export default function Home() {
                     <button onClick={addRecipe} className='share'>Share your recipe</button>
                 </div>
                 <div className='right'>
-                    <Tilt> 
+                    
                         <img src={foodRecipe} width="320px" className='plate' height="300px" alt="Food Recipe" />
-                    </Tilt>
+                    
                 </div>
             </section>
             {(isOpen) && <Modal onClose={() => setIsOpen(false)}><InputForm setIsOpen={() => setIsOpen(false)} /></Modal>}
