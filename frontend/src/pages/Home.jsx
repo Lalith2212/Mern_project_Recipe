@@ -5,7 +5,6 @@ import Footer from '../components/Footer'
 import RecipeItems from '../components/RecipeItems'
 import { useNavigate } from 'react-router-dom'
 import Modal from '../components/Modal'
-
 import InputForm from '../components/InputForm'
 
 
@@ -31,7 +30,7 @@ export default function Home() {
                     <button onClick={addRecipe}>Share your recipe</button>
                 </div>
                 <div className='right'>
-                
+                <img src={foodRecipe} width="320px" className='plate' height="300px"></img> 
                 
 
                 </div>
