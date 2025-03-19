@@ -16,17 +16,8 @@ export default function Navbar() {
     const token = localStorage.getItem("token");
     const userData = localStorage.getItem("user");
 
-    const wasLoggedIn = isLogin; // Store previous login state
-
     setIsLogin(!!token);
     setUser(userData ? JSON.parse(userData) : null);
-
-    // ✅ Show toast message only when login state changes
-    if (!wasLoggedIn && token) {
-      toast.success("Successfully logged in!");
-    } else if (wasLoggedIn && !token) {
-      toast.success("Logged out successfully!");
-    }
   };
 
   // ✅ Load auth state when component mounts
@@ -46,7 +37,6 @@ export default function Navbar() {
     localStorage.removeItem("user");
     setIsLogin(false);  // Update state immediately
     setUser(null);
-    toast.success("Logged out successfully!"); // ✅ Toast on logout
   };
 
   return (
@@ -103,7 +93,6 @@ export default function Navbar() {
               setIsLogin={(status) => {
                 setIsLogin(status);
                 if (status) {
-                  toast.success("Logged in successfully!"); // ✅ Toast on login
                   updateAuthState(); // Ensure state updates
                 }
               }} 
@@ -121,7 +110,6 @@ export default function Navbar() {
               setIsLogin={(status) => {
                 setIsLogin(status);
                 if (status) {
-                  toast.success("Signup successful! Logged in."); // ✅ Toast on signup
                   updateAuthState(); // Ensure state updates
                 }
               }} 
