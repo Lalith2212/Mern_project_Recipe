@@ -7,7 +7,7 @@ export default function MainNavigation() {
   return (
    <>
     <Navbar />
-    <div style={{ backgroundColor: "#ffe4b5", minHeight: "100vh", width: "100vw", padding: "20px" }}>
+    <div style={{ backgroundColor: "#E1F7F7", minHeight: "100vh", width: "100vw", padding: "20px" }}>
       <Outlet />
     </div>
     <Footer />

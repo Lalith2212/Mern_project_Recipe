@@ -164,8 +164,8 @@ section{
 
 
 .home a:hover{
-  color: white;
-  background-color: #e9dddd;
+  color: rgb(117, 7, 7);
+  background-color: #4b0b0b;
 }
 .share {
   padding: 10px 20px;
@@ -221,22 +221,30 @@ section{
 }
 
 .card-container{
-  width: 80%;
-  margin: auto;
-  display: grid;
-  gap:2.5rem;
-  grid-template-columns: repeat(auto-fit,13rem);
-  cursor:pointer
-}
-
-.card{
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
   text-align: center;
   border-radius: 5px;
+  width:auto;
+}
+.card-container{
+  background: none;
+  box-shadow: none;
+  border: none;
+  margin-top: 80px;
+  position: relative;
+}
+
+.card{
+  
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  border-radius: 5px;
+  max-width: 250px;
+  width:auto;
 }
 
 .card-body{
-  background-color: #b96a10;
+  background-color: #7e0c0c;
   padding: 1rem;
 }
 
@@ -499,7 +507,7 @@ section{
 
 .active{
   color:black !important;
-  background-color: #d4f6e8;
+  background-color: #07706b;
 }
 .user-info {
   display: flex;
@@ -644,4 +652,10 @@ section{
     left: 5%;
   }
 }
+.outer-container img{
 
+}
+.home .left h1, 
+.home .left h5 {
+  color: black; /* Change text color to black */
+}
