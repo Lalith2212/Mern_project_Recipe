@@ -3,36 +3,29 @@ import Modal from "./Modal";
 import InputForm from "./InputForm";
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
-import { FaBowlFood } from "react-icons/fa6"; // ✅ Correct import for FaBowlFood
-import { FaSearch } from "react-icons/fa";  // FaSearch remains the same
+import { FaBowlFood } from "react-icons/fa6";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isSignupOpen, setIsSignupOpen] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
   const [user, setUser] = useState(null);
-  const [searchQuery, setSearchQuery] = useState(""); // 🆕 Search state
 
   // ✅ Function to update login state
   const updateAuthState = () => {
     const token = localStorage.getItem("token");
     const userData = localStorage.getItem("user");
 
-    const wasLoggedIn = isLogin;
     setIsLogin(!!token);
     setUser(userData ? JSON.parse(userData) : null);
-
-    if (!wasLoggedIn && token) {
-      toast.success("Successfully logged in!");
-    } else if (wasLoggedIn && !token) {
-      toast.success("Logged out successfully!");
-    }
   };
 
+  // ✅ Load auth state when component mounts
   useEffect(() => {
     updateAuthState();
   }, []);
 
+  // ✅ Listen for login/logout changes
   useEffect(() => {
     window.addEventListener("storage", updateAuthState);
     return () => window.removeEventListener("storage", updateAuthState);
@@ -42,15 +35,8 @@ export default function Navbar() {
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    setIsLogin(false);
+    setIsLogin(false);  // Update state immediately
     setUser(null);
-    toast.success("Logged out successfully!");
-  };
-
-  // ✅ Handle search input
-  const handleSearch = (e) => {
-    setSearchQuery(e.target.value);
-    console.log("Searching for:", e.target.value);
   };
 
   return (
@@ -61,19 +47,13 @@ export default function Navbar() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        {/* Logo */}
-        <motion.h2 className="logo" whileHover={{ scale: 1.1 }} style={{ color: "black" }}>
-  <FaBowlFood /> Hungry Hive
-</motion.h2>
+        <motion.h2 className="logo" whileHover={{ scale: 1.1 }}>
+          <FaBowlFood /> Hungry Hive
+        </motion.h2>
 
-
-        {/* Navigation Links */}
         <ul className="nav-links">
           <motion.li whileHover={{ scale: 1.1 }}>
             <NavLink to="/">Home</NavLink>
-          </motion.li>
-          <motion.li whileHover={{ scale: 1.1 }}>
-          <NavLink to="/about">About Us</NavLink> {/* ✅ Aboutus */}
           </motion.li>
           <motion.li whileHover={{ scale: 1.1 }} onClick={() => !isLogin && setIsOpen(true)}>
             <NavLink to={isLogin ? "/myRecipe" : "#"}>My Recipe</NavLink>
@@ -83,10 +63,6 @@ export default function Navbar() {
           </motion.li>
         </ul>
 
-        {/* Search Bar */}
-       
-
-        {/* Auth Buttons */}
         <div className="auth-buttons">
           {!isLogin ? (
             <>
@@ -110,40 +86,36 @@ export default function Navbar() {
         </div>
       </motion.header>
 
-      {/* Login Modal */}
       {isOpen && (
         <Modal onClose={() => setIsOpen(false)}>
           <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }}>
-            <InputForm
+            <InputForm 
               setIsLogin={(status) => {
                 setIsLogin(status);
                 if (status) {
-                  toast.success("Logged in successfully!");
-                  updateAuthState();
+                  updateAuthState(); // Ensure state updates
                 }
-              }}
-              setUser={setUser}
-              setIsOpen={setIsOpen}
+              }} 
+              setUser={setUser} 
+              setIsOpen={setIsOpen} 
             />
           </motion.div>
         </Modal>
       )}
 
-      {/* Signup Modal */}
       {isSignupOpen && (
         <Modal onClose={() => setIsSignupOpen(false)}>
           <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }}>
-            <InputForm
+            <InputForm 
               setIsLogin={(status) => {
                 setIsLogin(status);
                 if (status) {
-                  toast.success("Signup successful! Logged in.");
-                  updateAuthState();
+                  updateAuthState(); // Ensure state updates
                 }
-              }}
-              setUser={setUser}
-              setIsOpen={setIsSignupOpen}
-              isSignup={true}
+              }} 
+              setUser={setUser} 
+              setIsOpen={setIsSignupOpen} 
+              isSignup={true} 
             />
           </motion.div>
         </Modal>

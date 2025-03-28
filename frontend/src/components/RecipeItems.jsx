@@ -66,28 +66,15 @@ export default function RecipeItems() {
                 onMouseEnter={(e) => e.currentTarget.style.transform = "scale(1.05)"}
                 onMouseLeave={(e) => e.currentTarget.style.transform = "scale(1)"}
             >
-    <img 
-    src={`https://mern-project-recipe.onrender.com/images/${item.coverImage}`} 
-    marginTop="10px"
-    padding-top="20px"
-    width="70%"  // Reduced size from 100% to 90%
-    height="100x" // Slightly reduced height
-    style={{
-        objectFit: "cover",
-        borderRadius: "12px",
-        boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
-        transition: "transform 0.3s ease-in-out",
-        cursor: "pointer",
-        marginTop: "20px",  // Adds gap from navbar
-        display: "block", 
-        marginLeft: "auto", 
-        marginRight: "auto" // Centers the image
-    }}
-    onMouseOver={(e) => e.currentTarget.style.transform = "scale(1.05)"}
-    onMouseOut={(e) => e.currentTarget.style.transform = "scale(1)"}
-/>
-
-        
+                <img 
+                    src={`https://mern-project-recipe.onrender.com/images/${item.coverImage}`} 
+                    width="100%" 
+                    height="150px"
+                    style={{
+                        objectFit: "cover",
+                        borderRadius: "8px",
+                    }}
+                />
                 <div className='card-body' style={{ marginTop: "10px" ,background:"#f4c842"}}>
                     <div className='title' style={{
                         fontSize: "1.1rem",

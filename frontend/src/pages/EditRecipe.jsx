@@ -9,7 +9,7 @@ export default function EditRecipe() {
 
     useEffect(()=>{
         const getData=async()=>{
-            await axios.get(`http://localhost:5000/recipe/${id}`)
+            await axios.get(`https://mern-project-recipe.onrender.com/recipe/${id}`)
             .then(response=>{
                 let res=response.data
                 setRecipeData({
