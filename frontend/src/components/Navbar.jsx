@@ -5,7 +5,6 @@ import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FaBowlFood } from "react-icons/fa6"; // ✅ Correct import for FaBowlFood
 import { FaSearch } from "react-icons/fa";  // FaSearch remains the same
-import toast from "react-hot-toast";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
