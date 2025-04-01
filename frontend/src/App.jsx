@@ -1,15 +1,14 @@
-import React from 'react'
-import './App.css'
+import React from 'react';
+import './App.css';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AboutUs from './pages/AboutUs';
-import {createBrowserRouter,RouterProvider} from "react-router-dom"
-import Home from './pages/Home'
-import MainNavigation from './components/MainNavigation'
-import axios from 'axios'
-import  AddFoodRecipe  from './pages/AddFoodRecipe'
-import EditRecipe from './pages/EditRecipe'
-import RecipeDetails from './pages/RecipeDetails'
-import RecipeItems from './components/RecipeItems'
-
+import Home from './pages/Home';
+import MainNavigation from './components/MainNavigation';
+import AddFoodRecipe from './pages/AddFoodRecipe';
+import EditRecipe from './pages/EditRecipe';
+import RecipeDetails from './pages/RecipeDetails';
+import RecipeItems from './components/RecipeItems';
+import axios from 'axios';
 const getAllRecipes=async()=>{
   let allRecipes=[]
   await axios.get('https://mern-project-recipe.onrender.com/recipe').then(res=>{
@@ -40,19 +39,21 @@ const getRecipe=async({params})=>{
 
   return recipe
 }
-
-const router=createBrowserRouter([
-  {path:"/",element:<MainNavigation/>,children:[
-    {path:"/",element:<Home/>,loader:getAllRecipes},
-    {path:"/myRecipe",element:<RecipeItems/>,loader:getMyRecipes},
-    {path:"/favRecipe",element:<RecipeItems/>,loader:getFavRecipes},
-    {path:"/addRecipe",element:<AddFoodRecipe/>},
-    {path:"/editRecipe/:id",element:<EditRecipe/>},
-    {path:"/recipe/:id",element:<RecipeDetails/>,loader:getRecipe}
-  ]}
- 
-])
-
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <MainNavigation />,
+    children: [
+      { path: "/", element: <Home />, loader: getAllRecipes },
+      { path: "/myRecipe", element: <RecipeItems />, loader: getMyRecipes },
+      { path: "/favRecipe", element: <RecipeItems />, loader: getFavRecipes },
+      { path: "/addRecipe", element: <AddFoodRecipe /> },
+      { path: "/editRecipe/:id", element: <EditRecipe /> },
+      { path: "/recipe/:id", element: <RecipeDetails />, loader: getRecipe },
+      { path: "/about", element: <AboutUs /> },  // ✅ "About Us" Route
+    ],
+  },
+]);
 export default function App() {
   return (
    <>
