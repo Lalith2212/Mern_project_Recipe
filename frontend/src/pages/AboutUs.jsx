@@ -1,4 +1,6 @@
-import React from "react"; // Import for animations // Import styled components
+import React from "react";
+import { keyframes } from "@emotion/react"; // Import for animations
+import styled from "@emotion/styled"; // Import styled components
 import lalithImg from "../assets/lalith.jpg";
 import saethuSaiImg from "../assets/saethusai.jpg";
 import anilImg from "../assets/anil.jpg";
