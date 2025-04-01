@@ -18,7 +18,7 @@ const AboutUs = () => {
     },
     {
       name: "Saethu Sai",
-      role: "Frontend Developer",
+      role: "Backend Developer",
       batch: "3rd Year CSE",
       img: saethuSaiImg,
     },
@@ -30,7 +30,7 @@ const AboutUs = () => {
     },
     {
       name: "Anjali",
-      role: "Recipe Data Analyst",
+      role: "Frontend",
       batch: "3rd Year CSE",
       img: ANJALIImg, // Default image
     },
