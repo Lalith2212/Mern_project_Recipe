@@ -1,5 +1,6 @@
 import React from 'react'
 import './App.css'
+import AboutUs from './pages/AboutUs';
 import {createBrowserRouter,RouterProvider} from "react-router-dom"
 import Home from './pages/Home'
 import MainNavigation from './components/MainNavigation'
