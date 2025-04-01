@@ -55,6 +55,9 @@ export default function Navbar() {
           <motion.li whileHover={{ scale: 1.1 }}>
             <NavLink to="/">Home</NavLink>
           </motion.li>
+          <motion.li whileHover={{ scale: 1.1 }}>
+          <NavLink to="/about">About Us</NavLink> {/* ✅ Aboutus */}
+          </motion.li>
           <motion.li whileHover={{ scale: 1.1 }} onClick={() => !isLogin && setIsOpen(true)}>
             <NavLink to={isLogin ? "/myRecipe" : "#"}>My Recipe</NavLink>
           </motion.li>
