@@ -6,6 +6,7 @@ import RecipeItems from '../components/RecipeItems'
 import { useNavigate } from 'react-router-dom'
 import Modal from '../components/Modal'
 import InputForm from '../components/InputForm'
+import { Tilt } from '@jdion/tilt-react'
 export default function Home() {
     const navigate = useNavigate()
     const [isOpen, setIsOpen] = useState(false)
@@ -28,9 +29,9 @@ export default function Home() {
                     <button onClick={addRecipe} className='share'>Share your recipe</button>
                 </div>
                 <div className='right'>
-                    
+                    <Tilt>
                         <img src={foodRecipe} width="320px" className='plate' height="300px" alt="Food Recipe" />
-                    
+                        </Tilt>
                 </div>
             </section>
             {(isOpen) && <Modal onClose={() => setIsOpen(false)}><InputForm setIsOpen={() => setIsOpen(false)} /></Modal>}

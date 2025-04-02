@@ -76,7 +76,7 @@ const Container = styled.div`
   padding: 60px 20px;
   text-align: center;
   font-family: "Arial", sans-serif;
-  background-color:rgb(3, 43, 20);
+  background-color:rgb(34, 181, 201);
   min-height: 100vh;
 `;
 
